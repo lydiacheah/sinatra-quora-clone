@@ -1,0 +1,21 @@
+<h1>The best answer to any question</h1>
+
+<h2>Sign up</h2>
+<form method=post action=/signup>
+	<input type=text placeholder="Your full name" name="user[full_name]"><br>
+	<input type=text placeholder="Your email address" name="user[email]"><br>
+	<input type=password placeholder="Your password" name="user[password]"><br>
+	<input type=password placeholder="Confirm your password" name="user[password_confirmation]"><br>
+	<button class="btn btn-lg outline" type="submit" value="Sign up">Sign Up</button>
+</form>
+
+<%=@signup_msg if @signup_msg%>
+
+<h2>Login</h2>
+<form method=post action=/login>
+ <input type=text placeholder="Your email address" name="user[email]" required><br>
+ <input type=password placeholder="Your password" name="user[password]" required><br>
+ <button class="btn btn-lg outline" type="submit" value="Login">Login</button>
+</form>
+
+<%=@login_msg if @login_msg%>

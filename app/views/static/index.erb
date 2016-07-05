@@ -1,2 +1,4 @@
-<h1>Hello World</h1>
-<p>See Me in views/static/index.html.erb</p>
+Welcome, <%=current_user.full_name%>.
+<form method=post action=/logout>
+	<button class="btn btn-lg outline" type="submit" value="Logout">Logout</button>
+</form>
