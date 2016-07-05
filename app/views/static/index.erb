@@ -1,4 +1,11 @@
 Welcome, <%=current_user.full_name%>.
 <form method=post action=/logout>
-	<button class="btn btn-lg outline" type="submit" value="Logout">Logout</button>
+	<button class="btn" type="submit" value="Logout">Logout</button>
 </form>
+<%full_name = current_user.full_name.gsub(" ", "-")%>
+<form method=get action="/user/<%=full_name%>">
+	<button class="btn" type="submit" value="Profile">View Profile</button>
+</form>
+
+
+<!-- # <a href="/users/<%= current_user.id" -->
