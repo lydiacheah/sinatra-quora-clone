@@ -1,21 +1,28 @@
-<h1>The best answer to any question</h1>
+<div id="background">
+	<div id="quoraLogo"></div>
+	<h2 id="subtitle">The best answer to any question</h2>
+	<div id="buttons">
+	<!-- <h2>Sign up</h2>
+	<form method=post action=/signup>
+		<input type=text placeholder="Your full name" name="user[full_name]"><br>
+		<input type=text placeholder="Your email address" name="user[email]"><br>
+		<input type=password placeholder="Your password" name="user[password]"><br>
+		<input type=password placeholder="Confirm your password" name="user[password_confirmation]"><br> -->
+		<button type="button" class="btn btn-signup btn-lg outline" style="font-size: 27px; margin-right: 30px; font-weight: 550" value="Sign up">Sign Up</button>
+	<!-- </form> -->
 
-<h2>Sign up</h2>
-<form method=post action=/signup>
-	<input type=text placeholder="Your full name" name="user[full_name]"><br>
-	<input type=text placeholder="Your email address" name="user[email]"><br>
-	<input type=password placeholder="Your password" name="user[password]"><br>
-	<input type=password placeholder="Confirm your password" name="user[password_confirmation]"><br>
-	<button class="btn btn-lg outline" type="submit" value="Sign up">Sign Up</button>
-</form>
+	<!-- <h2>Login</h2> -->
+	<!-- <form method=post action=/login> -->
+	 <!-- <input type=text placeholder="Your email address" name="user[email]" required><br> -->
+	 <!-- <input type=password placeholder="Your password" name="user[password]" required><br> -->
+	 <button type="button" class="btn btn-login btn-lg outline" style="font-size: 27px; font-weight: 550" value="Login">Login</button>
+	<!-- </form> -->
+		<ul style="padding-top: 40px">
+			<li><a href=# style="color: rgba(175,175,175,0.95)">About</a></li>
+			<li><a href="https://github.com/lydiacheah" style="color: rgba(175,175,175,0.95)">Github</a></li>
+			<li><a href="https://www.facebook.com/notlydia" style="color: rgba(175,175,175,0.95)">Facebook</a></li>
+			<li><a href="http://twitter.com/lydiacheah" style="color: rgba(175,175,175,0.95)">Twitter</a></li>
+		</ul> 
+	</div>
+</div>
 
-<%=@signup_msg if @signup_msg%>
-
-<h2>Login</h2>
-<form method=post action=/login>
- <input type=text placeholder="Your email address" name="user[email]" required><br>
- <input type=password placeholder="Your password" name="user[password]" required><br>
- <button class="btn btn-lg outline" type="submit" value="Login">Login</button>
-</form>
-
-<%=@login_msg if @login_msg%>

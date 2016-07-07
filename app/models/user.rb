@@ -1,5 +1,6 @@
 class User < ActiveRecord::Base 
-	validates :email, uniqueness: {message: "Account already exists with that e-mail address."}, format: {with: /.+@.+\..+/, message: "Please enter a valid email address."}, presence: true
+	validates :email, uniqueness: {message: "Account already exists with that e-mail address."}, format: {with: /.+@.+\..+/, message: "Please enter a valid email address."}, presence: {message: "Please enter your email address."}
+	validates :full_name, presence: {message: "Please enter your full name."}
 	has_secure_password
 	before_create :capitalize
 
