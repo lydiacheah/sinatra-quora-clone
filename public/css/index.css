@@ -1,0 +1,88 @@
+#quora-header {
+	background: #fff;
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	min-height: 56px;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+	z-index: -5;
+	font-size: 14px;
+	border-top: 2px solid #b92b27;
+	border-bottom: 1px solid #ddd;
+	box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2);
+}
+
+.inner-header {
+	width: 75%;
+	margin: auto;
+	/*display: inline block;*/
+	z-index: 0;
+	margin-bottom: 0px;
+}
+
+#header-quora-logo {
+	display: block;
+	width: 80px;
+	height: 50px;
+	background-size: 80px 23px;
+	background-image: url(//qsf.ec.quoracdn.net/-images.logo.wordmark_default.svg3b3df568383b6fd1.svg);
+	background-repeat: no-repeat;
+	background-position: center center;	
+}
+
+#question {
+	width: 90%;
+	text-align: center;
+	/*display: inline;*/
+}
+
+#question-input {
+	margin-top: 10px;
+	width: 40%;
+	padding: 2px;
+  box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+}
+
+#index-body {
+	/*margin-top: 70px;*/
+	position: fixed;
+	margin: auto;
+	/*margin-top: 70px;*/
+	margin-top: 100px;
+}
+/*
+#user_info {
+	text-align: right;
+}*/
+
+#ask_button {
+	display: table-cell;
+	border-radius: 3px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 3px;
+  border-bottom-right-radius: 3px;
+  border-bottom-left-radius: 0;
+  font-weight: 500;
+  outline: 0;
+  text-align: center;
+  text-decoration: none;
+  background: #fff;
+  color: #585a61;
+  border: 1px solid #ced1e1;
+  /*float: right;*/
+  font-size: 15px;
+  line-height: normal;
+  padding: 6px 8px 5px 10px;
+  /*margin: 0;*/
+  margin-left: -10px;
+ 	box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+
+}
+
+#feed {
+	border-top: 1px solid #e2e2e2;
+	padding-top: 10px;
+}

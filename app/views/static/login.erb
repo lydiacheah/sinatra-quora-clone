@@ -1,23 +1,40 @@
 <div id="background">
 	<div id="quoraLogo"></div>
 	<h2 id="subtitle">The best answer to any question</h2>
-	<div id="buttons">
-	<!-- <h2>Sign up</h2>
-	<form method=post action=/signup>
-		<input type=text placeholder="Your full name" name="user[full_name]"><br>
-		<input type=text placeholder="Your email address" name="user[email]"><br>
-		<input type=password placeholder="Your password" name="user[password]"><br>
-		<input type=password placeholder="Confirm your password" name="user[password_confirmation]"><br> -->
-		<button type="button" class="btn btn-signup btn-lg outline" style="font-size: 27px; margin-right: 30px; font-weight: 550" value="Sign up">Sign Up</button>
-	<!-- </form> -->
+	<div class="buttons">
+		<button class="btn btn-signup btn-lg outline home signup" style="font-size: 27px; margin-right: 30px; font-weight: 550" value="Sign up">Sign Up</button>
+		<button class="btn btn-login btn-lg outline home login" style="font-size: 27px; font-weight: 550" value="Login">Login</button>
+	</div>
+	<div class="box">
+		<form id="signup" class="signup-login-form" method=post action=/signup>
+			<label for="name">Full Name</label>
+			<input type=text name="user[full_name]" value="name" placeholder=""><br>
+			<label for="email">Email Address</label>
+			<input type=text name="user[email]" value="email"><br>
+			<label for="password">Password</label>
+			<input type=password name="user[password]" value="password"><br>
+			<label for="password confirmation">Confirm Password</label>
+			<input type=password name="user[password_confirmation]" value="password confirmation"><br>
+			<div id="disclaimer">
+				By clicking "Sign Up" you indicate that you have read and agree to the Terms of Service and Privacy Policy.
+			</div>
+			<button type="submit" class="btn btn-primary" style="font-size: 13px; font-weight: 650; letter-spacing: 2px; margin-top: 10px; float: right; padding: 5px 15px">Sign Up</button>
+			<button type="button" class="btn btn-link home-cancel" style="font-size: 13px; color: #999; margin-top: 10px; float: right; padding: 5px 15px">Cancel</button>
+			<div style="clear: both;"></div>
+		</form>
 
-	<!-- <h2>Login</h2> -->
-	<!-- <form method=post action=/login> -->
-	 <!-- <input type=text placeholder="Your email address" name="user[email]" required><br> -->
-	 <!-- <input type=password placeholder="Your password" name="user[password]" required><br> -->
-	 <button type="button" class="btn btn-login btn-lg outline" style="font-size: 27px; font-weight: 550" value="Login">Login</button>
-	<!-- </form> -->
-		<ul style="padding-top: 40px">
+		<form id="login" class="signup-login-form" method=post action=/login>
+			<label for="email">Email Address</label>
+	 		<input type=text placeholder="Your email address" name="user[email]" value="email"><br>
+	 		<label for="password">Password</label>
+	 		<input type=password placeholder="Your password" name="user[password]" value="password"><br>
+	 	 	<button class="btn btn-primary" style="font-size: 13px; font-weight: 650; letter-spacing: 2px; margin-top: 10px; float: right; padding: 5px 15px">Login</button>
+	 	 	<button type="button" class="btn btn-link home-cancel" style="font-size: 13px; color: #999; margin-top: 10px; float: right; padding: 5px 15px">Cancel</button>
+			<div style="clear: both;"></div>
+	 	</form>
+	</div>
+	<div id="links" style="margin:auto; text-align: center">	
+		<ul style="padding-top: 30px">
 			<li><a href=# style="color: rgba(175,175,175,0.95)">About</a></li>
 			<li><a href="https://github.com/lydiacheah" style="color: rgba(175,175,175,0.95)">Github</a></li>
 			<li><a href="https://www.facebook.com/notlydia" style="color: rgba(175,175,175,0.95)">Facebook</a></li>

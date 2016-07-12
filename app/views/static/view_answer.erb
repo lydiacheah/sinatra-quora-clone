@@ -12,7 +12,7 @@
 			</div>
 			<div id="user-profile">
 		    <ul class="nav navbar-nav">
-		    <li class="dropdown" style="position: absolute; top:0; right:300px;">
+		    <li class="dropdown" style="position:absolute; top:0; right:300px;">
 	        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:black;">Welcome, <%=current_user.full_name%>
 	        <span class="caret"></span></a>
 	        <ul class="dropdown-menu">
@@ -34,22 +34,8 @@
 	  </div>
 	</nav>
 
-<div id="index-body" style="">
-	<%Question.all.each do |question|%>
-	<div id="feed">
-		<a href="http://localhost:9393/user/<%=question.user.full_name.gsub(" ", "-")%>"><div id="asked_by"><%=question.user.full_name%></div></a>
-		<a href="http://localhost:9393/question/<%=question.title.gsub(" ", "-")%>"><div id="title"><%=question.title + "?"%></div></a>
-		<div id="index-answer-number">
-			<%if question.answers.size == 1%>
-					<%="1 Answer"%>
-			<%elsif question.answers.size > 1%>
-				<%=question.answers.size.to_s + " Answers"%> 
-			<%else%>
-				<button type="button btn" class="answerButton" data-toggle="modal" data-target="#answerModal">Answer</button>
-			<%end%>
-		</div>
-	</div>
-	<%end%>
-</div>
+<div id="Content">
+	<a href="http://localhost:9393/question/<%=@question.title.gsub(" ", "-")%>"><h1><%=@question.title + "?"%></h1></a>
 
-<!-- # <a href="/users/<%= current_user.id" -->
+	<%=@answer.answer%>
+</div>

@@ -1,0 +1,15 @@
+#viewQuestionTitle {
+  line-height: 1.25;
+  font-weight: bold;
+  font-size: 28px;
+  letter-spacing: -1px;
+  display: block;
+  color: #333;	
+}
+
+#viewQuestionBody {
+	width: 65%;
+	margin: auto;
+	display: block;
+	text-align: center;
+}

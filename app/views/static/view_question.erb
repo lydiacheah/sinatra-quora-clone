@@ -1,0 +1,95 @@
+<nav class="navbar navbar-fixed-top" id="quora-header">
+	<div class="container-fluid">
+	<div class="inner-header">
+	    <div class="navbar-header">
+	     <a href="http://localhost:9393/"><div id="header-quora-logo"></div></a>
+	    </div>
+	    <div id="question">
+		    <form method=post action="/question/new">
+					<input id="question-input" type=text name="question" placeholder="Ask or Search Quora">
+					<button id="ask_button" type="submit">Ask Question</button>
+				</form>	
+			</div>
+			<div id="user-profile">
+		    <ul class="nav navbar-nav">
+		    <li class="dropdown" style="position:absolute; top:0; right:300px;">
+	        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:black;">Welcome, <%=current_user.full_name%>
+	        <span class="caret"></span></a>
+	        <ul class="dropdown-menu">
+		      	<li>
+		      		<%full_name = current_user.full_name.gsub(" ", "-")%>
+		      		<form method=get action="/user/<%=full_name%>">
+								<button class="btn" type="submit" value="Profile">View Profile</button>
+							</form>
+		      	</li>
+		      	<li>
+		      		<form method=post action=/logout>
+								<button class="btn" type="submit" value="Logout">Logout</button>
+							</form>
+		      	</li>
+		    	</ul>
+		    </li>
+		   	</ul>
+	</div>
+	</div>
+</nav>
+
+<div id="Content">
+	<div id="questionHead">
+		<a href="http://localhost:9393/user/<%=@question.user.full_name.gsub(" ", "-")%>"><div id="asked_by"><%=@question.user.full_name%></div></a>
+		<div id="title"><%=@question.title + "?"%></div>
+		
+		<!-- Opens answer modal -->
+		<button type="button btn" class="answerButton" data-toggle="modal" data-target="#answerModal">Answer</button>
+		<div id="answerNumber">
+			<%if @question.answers.size == 1%>
+					<%="1 Answer"%>
+			<%elsif @question.answers.size > 1%>
+				<%=@question.answers.size.to_s + " Answers"%> 
+			<%end%>
+		</div>
+	</div>
+		<!-- MODAL! -->
+		<div id="answerModal" class="modal fade" role="dialog">
+		  <div class="modal-dialog">	
+
+		    <div class="modal-content">
+		      <div class="modal-header">
+		        <button type="button" class="close" data-dismiss="modal">&times;</button>
+		        <h4 class="modal-title"><%=@question.title + "?"%></h4>
+		      </div>
+		      <div class="modal-body">
+		        <form method=post action="/answer/new">
+							<input id="answer-input" type="text" name="answer" placeholder="Write your answer" style="height: 200px; width: 100%">
+							<input type="hidden" name="question_id" value=<%=@question.id%>>
+							<button type="submit">Submit</button>
+						</form>	
+		      </div>
+		      <!-- MODAL FOOTER ('Close' button to dismiss modal) -->
+			     <!-- <div class="modal-footer">
+			        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+			      </div> -->
+		    </div>
+		  
+		  </div>
+		</div>
+
+	<div id="questionBody">
+			<%if @question.answers.size == 0%>
+				<div id="promptIcon"></div>
+				<div id="promptQuestion">Can you answer this question?</div>
+				<div id="promptAnswerButton"><button type="button btn" class="promptAnswerButton" data-toggle="modal" data-target="#answerModal">Answer</button>
+				</div>
+			<%end%>
+
+			<% @question.answers.each do |answer| %>
+			<% user_name = User.find_by(id: answer.user_id).full_name %>
+			<div class="answer">
+				<a href="http://localhost:9393/user/<%=user_name.gsub(" ", "-")%>"><%=user_name%></a>
+				<br>
+				<%=answer.answer%><br>
+				<a href="http://localhost:9393/<%=@question.title.gsub(" ", "-")%>/answer/<%=user_name.gsub(" ", "-")%>">x</a>
+			</div>
+			<%end%>
+	</div>
+</div>

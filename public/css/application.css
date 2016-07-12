@@ -1,3 +1,16 @@
+.errors {
+	width: 35%;
+	background-color: rgba(51, 122, 183, 0.5);
+	margin: auto;
+	padding: 6px;
+	border-radius: 3px;
+	text-align: center;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	font-size: 15px;
+	font-weight: 500;
+	letter-spacing: 1px;
+	display: none;
+}
 
 #background {
 	background: url(//qsf.ec.quoracdn.net/-images.home.logged_out_bg3.png2a7b3bcd55c5ca00.png);
@@ -14,7 +27,7 @@
 }
 
 #quoraLogo {
-	padding-top: 250px;
+	padding-top: 200px;
  	background-size: 400px;
   background-image: url(//qsf.ec.quoracdn.net/-images.logo.wordmark_default.svg3b3df568383b6fd1.svg);
   background-repeat: no-repeat;
@@ -30,7 +43,7 @@
 	font-weight: 400;
 	font-family: Georgia,Times,"Times New Roman",serif;
 	/*margin: 8px 0 50px;*/
-	margin-top: -50px;
+	margin-top: -20px;
 	color: #333;
 	text-align: center;
 }
@@ -42,15 +55,14 @@ li {
 	font-weight: 400;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	margin-right: 16px;
-	padding-top: 30px;
 }
 
-#buttons {
+.buttons {
 	text-align: center;
 	padding-top: 100px;
 }
 
-.btn {
+.buttons .btn {
   /*padding: 20px 30px;*/
   border: 0 none    
   font-weight: 1000;
@@ -83,4 +95,54 @@ li {
   border: 3px solid #AA2200;
   background-color: #AA2200;
   box-shadow: none;
+}
+
+.box {
+  background: #fff;
+  border: 1px solid #dcdcdc;
+  box-shadow: 0 2px 4px 0 #dcdcdc;
+  border-radius: 4px;
+  /*margin-top: 0;*/
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+  /**zoom: 1;*/
+  width: 38%;
+  padding: 22px;
+  margin: auto;
+  margin-top: 35px;
+  padding-bottom: 8px;
+  padding-top: 10px;
+  display: none;
+}
+
+.signup-login-form {
+	display: none;
+	width: 55%;
+	margin: auto;	
+	margin-bottom: 0;
+}
+
+.signup-login-form input {
+	margin-bottom: 5px;
+	padding: 3px;
+	float: right;
+}
+
+.signup-login-form label {
+	margin-top: 5px;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;	
+	/*float: left;*/
+	font-size: 13px;
+	padding: 5px;
+	margin-bottom: 9px;
+}
+
+#disclaimer {
+	color: #999;
+	font-size: 13px;
+	font-weight: 400;
+	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	margin-bottom: 5px;
+	margin-top: 5px;
 }

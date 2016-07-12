@@ -48,8 +48,47 @@ get '/user/:full_name' do
 	erb :'static/profile'
 end
 
-get '/:title' do
-	@question = Question.find_by(title: params[:title])
+get '/question/:title' do
+	question_title = params[:title].gsub("-", " ")
+	@question = Question.find_by(title: question_title)
 	erb :'static/view_question'
 end
 
+post '/question/new' do
+	@question = Question.new(title: params[:question], user_id: current_user.id)
+	if @question.save
+		question_url = @question.title.gsub(" ", "-")
+		redirect to "/question/#{question_url}"
+	elsif @question.title == "" 
+		flash[:error] = "Please enter a question."
+		redirect '/index'
+	else
+		redirect "/question/#{params[:question].gsub(" ", "-")}"
+	end
+end
+
+post '/answer/new' do
+	@question = Question.find_by(id: params[:question_id])
+	@answer = Answer.new(answer: params[:answer], user_id: current_user.id, question_id: params[:question_id])
+	question_url = Question.find_by(id: params[:question_id]).title.gsub(" ", "-")
+	@user = User.find_by(id: @answer.user_id).full_name.gsub(" ", "-")
+	if @question.answers.find_by(user_id: current_user.id) != nil
+		flash[:error] = "You have already answered this question before."
+		redirect "/question/#{question_url}"
+	else
+		if @answer.save
+			redirect "/#{question_url}/answer/#{@user}"
+		else
+			flash[:error] = @answer.errors.values.flatten.first 
+			redirect "/question/#{question_url}"
+		end
+	end
+end
+
+get '/:title/answer/:full_name' do
+	@user = User.find_by(full_name: params[:full_name].gsub("-"," "))
+	@question = Question.find_by(title: params[:title].gsub("-"," "))
+	@answer = @question.answers.where(user_id: @user.id).first
+	# @answer = Answer.find_by(user_id: @user.id)
+	erb :'static/view_answer'
+end

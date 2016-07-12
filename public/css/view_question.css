@@ -1,0 +1,107 @@
+#title {
+  color: #333;
+  letter-spacing: -0.5px;
+  line-height: 1.25;
+  font-weight: bold;
+  font-size: 28px;
+  letter-spacing: -1px;
+  font-size: 24px;
+  /*float: left;*/
+  margin-bottom: 20px;
+}
+
+#Content {
+	width: 80%;
+	/*display: block;*/
+	text-align: left;
+	font-weight: 400;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+	padding-top: 100px;
+	z-index: -10;
+	position: fixed;
+}
+
+#questionHead {
+  padding-bottom: 14px;
+  border-bottom: 1px solid #E3E3E3;	
+}
+
+.answerButton {
+	padding-left: 26px;
+  background: #f1f8fb;
+  background-image: url(//qsf.ec.quoracdn.net/-images.new_grid.ask_blue.svgac4aa78a1259359b.svg);
+  background-repeat: no-repeat;
+  background-size: 15px 15px;
+  background-position: 6px center;
+  box-sizing: border-box;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+  font-weight: 500;
+  outline: 0;
+  padding: 2px 8px 2px 22px;
+  text-decoration: none;
+  color: #2b6dad;
+  border: 1px solid #bbcadc;
+  margin-bottom: 30px;
+}
+
+.answerButton:hover {
+
+}
+
+#answerNumber {
+	color: #333;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+#promptIcon {
+	width: 50px;
+	height: 50px;
+	left: 50%;
+	margin-left: -25px;
+	top: 64px;
+	background-image: url(//qsf.ec.quoracdn.net/-images.question_prompt.answer.svg3242afae84919b09.svg);
+	margin: auto;
+	margin-top: 150px;
+}
+
+#promptQuestion {
+	text-align: center;
+	font-size: 18px;
+	font-weight: 500;
+	color: #333;
+	margin-top: 10px;
+}
+
+.promptAnswerButton { 
+	box-sizing: border-box;
+  border-radius: 3px;
+  box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
+  /*display: inline-block;*/
+  font-weight: 500;
+  outline: 0;
+  padding: 2px 8px 2px 8px;
+  /*text-align: center;*/
+  text-decoration: none;
+  color: #2b6dad;
+  border: 1px solid #bbcadc;
+  background: #f1f8fb;
+  margin-top: 15px;
+}
+
+#promptAnswerButton {
+	text-align: center;
+}
+
+/*ANSWERS*/
+
+.answer {
+	padding: 16px 0;
+  border-top: 1px solid #e2e2e2;
+  position: relative;
+}
+
+#asked_by {
+	margin-bottom: 2px;
+}
