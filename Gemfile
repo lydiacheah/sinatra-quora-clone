@@ -28,6 +28,7 @@ gem 'rspec'
 gem 'bcrypt'
 gem 'byebug'
 gem 'sinatra-flash'
+gem 'time_diff'
 
 group :development, :test do
 	# Adding shotgun for local web hosting

@@ -8,11 +8,11 @@
 	-webkit-box-sizing: border-box;
 	-moz-box-sizing: border-box;
 	box-sizing: border-box;
-	z-index: -5;
 	font-size: 14px;
 	border-top: 2px solid #b92b27;
 	border-bottom: 1px solid #ddd;
 	box-shadow: 0 3px 2px -2px rgba(200,200,200,0.2);
+	/*margin-bottom: -5px;*/
 }
 
 .inner-header {
@@ -20,7 +20,7 @@
 	margin: auto;
 	/*display: inline block;*/
 	z-index: 0;
-	margin-bottom: 0px;
+	/*margin-bottom: -5px;*/
 }
 
 #header-quora-logo {
@@ -46,17 +46,15 @@
   box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);
 }
 
-#index-body {
-	/*margin-top: 70px;*/
-	position: fixed;
-	margin: auto;
-	/*margin-top: 70px;*/
-	margin-top: 100px;
+#question form {
+	margin-bottom: 0;
 }
-/*
-#user_info {
-	text-align: right;
-}*/
+
+#index-body {
+	margin: auto;
+	margin-top: 100px;
+	width: 100%;
+}
 
 #ask_button {
 	display: table-cell;
@@ -73,9 +71,9 @@
   color: #585a61;
   border: 1px solid #ced1e1;
   /*float: right;*/
-  font-size: 15px;
+  /*font-size: 15px;*/
   line-height: normal;
-  padding: 6px 8px 5px 10px;
+  padding: 6px 8px 6px 10px;
   /*margin: 0;*/
   margin-left: -10px;
  	box-shadow: 0 1px 1px 0 rgba(200,200,200,0.2);

@@ -76,6 +76,9 @@ GEM
       rack (~> 1.0)
     thread_safe (0.3.5)
     tilt (2.0.1)
+    time_diff (0.3.0)
+      activesupport
+      i18n
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
 
@@ -98,6 +101,7 @@ DEPENDENCIES
   sinatra-contrib
   sinatra-flash
   thin
+  time_diff
 
 BUNDLED WITH
    1.12.5

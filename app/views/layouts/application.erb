@@ -5,6 +5,7 @@
 		<link rel="stylesheet" href="/css/index.css">
 		<link rel="stylesheet" href="/css/view_answer.css">
 		<link rel="stylesheet" href="/css/view_question.css">
+		<link rel="stylesheet" href="/css/profile.css">
 		<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css"/>
 
 	<!-- JQUERY STUFF -->
@@ -12,14 +13,17 @@
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
   	<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
   	<script src="/js/application.js"></script>
+  	<script src="/js/upvotes.js"></script>
 
 		<title>Quora Clone</title>
 	</head>
 	<body class="container">
-		<div class="errors alert alert-warning fade in" style="z-index: 1000;">
+	<% if flash[:error]%>
+		<div class="errors alert alert-warning fade in" style="margin-top:56px;">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close" style="">&times;</a>
 			<%=flash[:error] if flash[:error]%>
 		</div>
+		<%end%>
 		<%= yield %>
 	</body>
 </html>

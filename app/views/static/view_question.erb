@@ -1,3 +1,5 @@
+<div id="container">
+
 <nav class="navbar navbar-fixed-top" id="quora-header">
 	<div class="container-fluid">
 	<div class="inner-header">
@@ -33,24 +35,42 @@
 	</div>
 	</div>
 </nav>
+<%time_diff_components = Time.diff(@question.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>
 
-<div id="Content">
+<div id="Content" style="">
 	<div id="questionHead">
 		<a href="http://localhost:9393/user/<%=@question.user.full_name.gsub(" ", "-")%>"><div id="asked_by"><%=@question.user.full_name%></div></a>
 		<div id="title"><%=@question.title + "?"%></div>
-		
+
 		<!-- Opens answer modal -->
-		<button type="button btn" class="answerButton" data-toggle="modal" data-target="#answerModal">Answer</button>
+		<%if @question.answers.count > 0%>
+
+		<button type="button btn" class="answerButton" data-toggle="modal" data-target="#<%=@question.id%>">Answer</button>
+		<%end%>
+		<form method="post" action="/questions/<%= @question.id%>/vote" class="vote">
+			<%if @question.question_votes.where(user_id: current_user.id).exists? && @question.question_votes.find_by(user_id: current_user.id).upvote == true%>
+				<button type="submit" id="downvote" class="downvote_button">
+					<span class="question_vote_count_down"><%=@question.question_votes.where(upvote: true).count%></span>
+					<span class="vote_text"> | Upvoted</span>
+				</button>
+			<%else%>
+ 			<button type="submit" id="upvote" class="upvote_button">
+				<span class="question_vote_count"><%=@question.question_votes.where(upvote: true).count%></span>
+				<span class="vote_text"> | Upvote</span>
+			</button>	
+			<%end%>
+		</form> 
+		<div id="asked-time">Question posted <%=time_diff_components[:diff]%> ago</div>
 		<div id="answerNumber">
-			<%if @question.answers.size == 1%>
+			<%if @question.answers.count == 1%>
 					<%="1 Answer"%>
-			<%elsif @question.answers.size > 1%>
-				<%=@question.answers.size.to_s + " Answers"%> 
+			<%elsif @question.answers.count > 1%>
+				<%=@question.answers.count.to_s + " Answers"%> 
 			<%end%>
 		</div>
 	</div>
 		<!-- MODAL! -->
-		<div id="answerModal" class="modal fade" role="dialog">
+		<div id="<%=@question.id%>" class="modal fade" role="dialog">
 		  <div class="modal-dialog">	
 
 		    <div class="modal-content">
@@ -78,7 +98,7 @@
 			<%if @question.answers.size == 0%>
 				<div id="promptIcon"></div>
 				<div id="promptQuestion">Can you answer this question?</div>
-				<div id="promptAnswerButton"><button type="button btn" class="promptAnswerButton" data-toggle="modal" data-target="#answerModal">Answer</button>
+				<div id="promptAnswerButton"><button type="button btn" class="promptAnswerButton" data-toggle="modal" data-target="#<%=@question.id%>">Answer</button>
 				</div>
 			<%end%>
 
@@ -92,4 +112,6 @@
 			</div>
 			<%end%>
 	</div>
+</div>
+
 </div>

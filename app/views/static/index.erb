@@ -1,55 +1,93 @@
-<nav class="navbar navbar-fixed-top" id="quora-header">
-	<div class="container-fluid">
-	<div class="inner-header">
-	    <div class="navbar-header">
-	     <a href="http://localhost:9393/"><div id="header-quora-logo"></div></a>
-	    </div>
-	    <div id="question">
-		    <form method=post action="/question/new">
-					<input id="question-input" type=text name="question" placeholder="Ask or Search Quora">
-					<button id="ask_button" type="submit">Ask Question</button>
-				</form>	
-			</div>
-			<div id="user-profile">
-		    <ul class="nav navbar-nav">
-		    <li class="dropdown" style="position: absolute; top:0; right:300px;">
-	        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:black;">Welcome, <%=current_user.full_name%>
-	        <span class="caret"></span></a>
-	        <ul class="dropdown-menu">
-		      	<li>
-		      		<%full_name = current_user.full_name.gsub(" ", "-")%>
-		      		<form method=get action="/user/<%=full_name%>">
-								<button class="btn" type="submit" value="Profile">View Profile</button>
-							</form>
-		      	</li>
-		      	<li>
-		      		<form method=post action=/logout>
+<div id="container">
+
+	<nav class="navbar navbar-fixed-top" id="quora-header">
+		<div class="container-fluid">
+		<div class="inner-header">
+		    <div class="navbar-header">
+		     <a href="http://localhost:9393/"><div id="header-quora-logo"></div></a>
+		    </div>
+		    <div id="question">
+			    <form method=post action="/question/new">
+						<input id="question-input" type=text name="question" placeholder="Ask or Search Quora">
+						<button id="ask_button" type="submit">Ask Question</button>
+					</form>	
+				</div>
+				<div id="user-profile">
+			  	<ul class="nav navbar-nav">
+			    <li class="dropdown" style="position: absolute; top:0; right:300px;">
+		        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:black;">Welcome, <%=current_user.full_name%>
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+				    	<li>
+				      	<%full_name = current_user.full_name.gsub(" ", "-")%>
+				      	<form method=get action="/user/<%=full_name%>">
+									<button class="btn" type="submit" value="Profile">View Profile</button>
+								</form>
+				      </li>
+				      <li>
+				      <form method=post action=/logout>
 								<button class="btn" type="submit" value="Logout">Logout</button>
 							</form>
-		      	</li>
-		    	</ul>
-		    </li>
-		    </ul>
-	    </div>
-	  </div>
+				    	</li>
+			    	</ul>
+			  	</li>
+			  	</ul>
+		  </div>
+		</div>
 	</nav>
 
-<div id="index-body" style="">
-	<%Question.all.each do |question|%>
-	<div id="feed">
-		<a href="http://localhost:9393/user/<%=question.user.full_name.gsub(" ", "-")%>"><div id="asked_by"><%=question.user.full_name%></div></a>
-		<a href="http://localhost:9393/question/<%=question.title.gsub(" ", "-")%>"><div id="title"><%=question.title + "?"%></div></a>
-		<div id="index-answer-number">
-			<%if question.answers.size == 1%>
-					<%="1 Answer"%>
-			<%elsif question.answers.size > 1%>
-				<%=question.answers.size.to_s + " Answers"%> 
-			<%else%>
-				<button type="button btn" class="answerButton" data-toggle="modal" data-target="#answerModal">Answer</button>
-			<%end%>
-		</div>
-	</div>
-	<%end%>
-</div>
+	<div id="index-body" style="">
+		<%Question.all.each do |question|%>
+		<div id="feed">
+			<a href="http://localhost:9393/user/<%=question.user.full_name.gsub(" ", "-")%>"><div id="asked_by"><%=question.user.full_name%></div></a>
+			<a href="http://localhost:9393/question/<%=question.title.gsub(" ", "-")%>"><div id="title"><%=question.title + "?"%></div></a>
+			<div id="index-answer-number">
+				<%if question.answers.count == 1%>
+						<%="1 Answer"%>
+				<%elsif question.answers.count > 1%>
+					<%=question.answers.count.to_s + " Answers"%> 
+				<%else%>
+					<button type="button btn" class="answerButton" data-toggle="modal" data-target="#<%=question.id%>">Answer</button>
+				<%end%>
+					<form method="post" action="/questions/<%=question.id%>/vote" class="vote">
+						<%if question.question_votes.where(user_id: current_user.id).exists? && question.question_votes.find_by(user_id: current_user.id).upvote == true%>
+							<button type="submit" class="downvote_button">
+								<span class="question_vote_count"><%=question.question_votes.where(upvote: true).count%></span>
+								<span class="vote_text"> | Upvoted</span>
+							</button>
+						<%else%>
+			 			<button type="submit" class="upvote_button">
+							<span class="question_vote_count"><%=question.question_votes.where(upvote: true).count%></span>
+							<span class="vote_text"> | Upvote</span>
+						</button>	
+						<%end%>
+					</form> 
+					<!-- MODAL -->
+					<div id="<%=question.id%>" class="modal fade" role="dialog">
+					  <div class="modal-dialog">	
 
-<!-- # <a href="/users/<%= current_user.id" -->
+					    <div class="modal-content">
+					      <div class="modal-header">
+					        <button type="button" class="close" data-dismiss="modal">&times;</button>
+					        <h4 class="modal-title"><%=question.title + "?"%></h4>
+					      </div>
+					      <div class="modal-body">
+					        <form method=post action="/answer/new">
+										<input id="answer-input" type="text" name="answer" placeholder="Write your answer" style="height: 200px; width: 100%">
+										<input type="hidden" name="question_id" value=<%=question.id%>>
+										<button type="submit">Submit</button>
+									</form>	
+					      </div>
+					      <!-- MODAL FOOTER ('Close' button to dismiss modal) -->
+						     <!-- <div class="modal-footer">
+						        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+						      </div> -->
+					    </div>
+					  
+					  </div>
+					</div>
+			</div>
+		</div>
+		<%end%>
+	</div>
+</div>

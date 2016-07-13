@@ -1,15 +1,24 @@
+#container {
+	/*position: absolute;*/
+	/*margin-left: 20% !important;*/
+	top: 0%;
+}
+
 .errors {
 	width: 35%;
 	background-color: rgba(51, 122, 183, 0.5);
-	margin: auto;
 	padding: 6px;
 	border-radius: 3px;
-	text-align: center;
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	font-size: 15px;
 	font-weight: 500;
 	letter-spacing: 1px;
 	display: none;
+	margin: auto;
+	text-align: center;
+	position: absolute;
+	margin-left: 12%;
+	z-index: 1000 !important;
 }
 
 #background {
@@ -145,4 +154,8 @@ li {
 	font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
 	margin-bottom: 5px;
 	margin-top: 5px;
+}
+
+.vote {
+	display: inline-block;
 }

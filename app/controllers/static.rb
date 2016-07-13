@@ -56,12 +56,12 @@ end
 
 post '/question/new' do
 	@question = Question.new(title: params[:question], user_id: current_user.id)
-	if @question.save
-		question_url = @question.title.gsub(" ", "-")
-		redirect to "/question/#{question_url}"
-	elsif @question.title == "" 
+	if @question.title == ""
 		flash[:error] = "Please enter a question."
 		redirect '/index'
+	elsif @question.save
+		question_url = @question.title.gsub(" ", "-")
+		redirect to "/question/#{question_url}"
 	else
 		redirect "/question/#{params[:question].gsub(" ", "-")}"
 	end
@@ -91,4 +91,25 @@ get '/:title/answer/:full_name' do
 	@answer = @question.answers.where(user_id: @user.id).first
 	# @answer = Answer.find_by(user_id: @user.id)
 	erb :'static/view_answer'
+end
+
+post '/questions/:question_id/vote' do
+	@question = Question.find(params[:question_id])
+	@vote = QuestionVote.find_or_initialize_by(question_id: params[:question_id], user_id: current_user.id)
+
+	if @vote.new_record? 
+		@vote.upvote = true
+	else
+		@vote.toggle(:upvote)
+	end
+
+	@vote.save
+
+	if request.xhr?
+		{ vote_count: @question.question_votes.where(upvote: true).count,
+			voted: @vote.upvote
+		}.to_json
+	else
+		redirect "/questions/#{@question.title.gsub(" ", "-")}"
+	end
 end
