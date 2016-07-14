@@ -23,7 +23,7 @@
 }
 
 #questionHead {
-  padding-bottom: 14px;
+  padding-bottom: 5px;
   border-bottom: 1px solid #E3E3E3;	
 }
 
@@ -47,13 +47,15 @@
 }
 
 .answerButton:hover {
-
+	border: 1px solid #2865a1;
+  color: #2865a1;
 }
 
 #answerNumber {
 	color: #333;
   font-weight: 500;
   font-size: 18px;
+  display: inline;
 }
 
 #promptIcon {
@@ -91,8 +93,25 @@
   padding: 3px 7px 4px 7px;
 }
 
+.promptAnswerButton:hover {
+	border: 1px solid #2865a1;
+  color: #2865a1;
+}
+
 #promptAnswerButton {
 	text-align: center;
+}
+
+#delete {
+	font-size: 15px; 
+	color: #800000; 
+	opacity: 0.7;
+	margin-top: 10px; 
+	text-align: right;
+	float: right;
+	padding: 5px 15px;
+	font-weight: 500;
+	cursor: pointer;
 }
 
 /*ANSWERS*/
@@ -154,4 +173,47 @@
 .downvote_button:hover {
 	color: #919191;
    border: 1px solid #919191;
+}
+
+#asked-time {
+	color: #999;
+	/*margin-bottom: 15px;*/
+	padding-top: 8px;
+	display: inline-block; 
+	float: right;
+}
+
+#question-answer {
+	margin-top: 5px;
+	margin-bottom: 10px;
+	font-size: 18px;
+}
+
+#answer-asked-time {
+	color: #999;
+	font-size: 10px;
+	/*margin-bottom: 15px;*/
+	padding-top: 8px;
+	display: inline; 
+	float: right;
+}
+
+#answer-asked-time:hover {
+	text-decoration: underline;
+}
+
+#deleteConfirmationButton {
+	text-align: center;
+	display: block;
+	margin: auto;
+	background-color: #b92b27;
+}
+
+#deleteConfirmationButton:hover {
+	background-color: #800000;
+}
+
+.modal-footer { 
+	margin-top: 15px;
+	margin-bottom: -15px;
 }

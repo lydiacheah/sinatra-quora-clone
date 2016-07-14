@@ -113,3 +113,31 @@ post '/questions/:question_id/vote' do
 		redirect "/questions/#{@question.title.gsub(" ", "-")}"
 	end
 end
+
+post '/answers/:answer_id/vote' do
+	@answer = Answer.find(params[:answer_id])
+	@vote = AnswerVote.find_or_initialize_by(answer_id: params[:answer_id], user_id: current_user.id)
+
+	if @vote.new_record? 
+		@vote.upvote = true
+	else
+		@vote.toggle(:upvote)
+	end
+
+	@vote.save
+
+	if request.xhr?
+		{ vote_count: @answer.answer_votes.where(upvote: true).count,
+			voted: @vote.upvote
+		}.to_json
+	else
+		redirect "/questions/#{@question.title.gsub(" ", "-")}"
+	end
+end
+
+delete '/questions/:question_id' do
+	Question.find(params[:question_id]).destroy
+	flash[:alert] = "Your question has been deleted."
+
+	redirect "/"
+end

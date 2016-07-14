@@ -18,12 +18,57 @@
 		<title>Quora Clone</title>
 	</head>
 	<body class="container">
+	<%if logged_in?%>
+		<nav class="navbar navbar-fixed-top" id="quora-header">
+		<div class="container-fluid">
+		<div class="inner-header">
+		    <div class="navbar-header">
+		     <a href="http://localhost:9393/"><div id="header-quora-logo"></div></a>
+		    </div>
+		    <div id="question">
+			    <form method=post action="/question/new">
+						<input id="question-input" type=text name="question" placeholder="Ask or Search Quora">
+						<button id="ask_button" type="submit">Ask Question</button>
+					</form>	
+				</div>
+				<div id="user-profile">
+			  	<ul class="nav navbar-nav">
+			    <li class="dropdown" style="position: absolute; top:0; right:300px;">
+		        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:black;">Welcome, <%=current_user.full_name%>
+		        <span class="caret"></span></a>
+		        <ul class="dropdown-menu">
+				    	<li>
+				      	<%full_name = current_user.full_name.gsub(" ", "-")%>
+				      	<form method=get action="/user/<%=full_name%>">
+									<button class="btn" type="submit" value="Profile">View Profile</button>
+								</form>
+				      </li>
+				      <li>
+				      <form method=post action=/logout>
+								<button class="btn" type="submit" value="Logout">Logout</button>
+							</form>
+				    	</li>
+			    	</ul>
+			  	</li>
+			  	</ul>
+		 		</div>
+		</div>
+		</nav>
+	<%end%>
+
 	<% if flash[:error]%>
-		<div class="errors alert alert-warning fade in" style="margin-top:56px;">
+		<div class="errors alert alert-warning fade in" style="margin-top:56px; margin-left: 250px;">
 			<a href="#" class="close" data-dismiss="alert" aria-label="close" style="">&times;</a>
 			<%=flash[:error] if flash[:error]%>
 		</div>
-		<%end%>
+	<%end%>
+
+	<% if flash[:alert]%>
+		<div class="errors alert alert-info fade in" style="margin-top:56px; margin-left: 250px;">
+			<a href="#" class="close" data-dismiss="alert" aria-label="close" style="">&times;</a>
+			<%=flash[:alert] if flash[:alert]%>
+		</div>
+	<%end%>
 		<%= yield %>
 	</body>
 </html>

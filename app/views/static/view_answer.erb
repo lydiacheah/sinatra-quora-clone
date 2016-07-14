@@ -1,45 +1,8 @@
 <div id="container">
+	<div id="Content">
+		<a href="http://localhost:9393/question/<%=@question.title.gsub(" ", "-")%>"><h1><%=@question.title + "?"%></h1></a>
 
-<nav class="navbar navbar-fixed-top" id="quora-header">
-	<div class="container-fluid">
-	<div class="inner-header">
-	    <div class="navbar-header">
-	     <a href="http://localhost:9393/"><div id="header-quora-logo"></div></a>
-	    </div>
-	    <div id="question">
-		    <form method=post action="/question/new">
-					<input id="question-input" type=text name="question" placeholder="Ask or Search Quora">
-					<button id="ask_button" type="submit">Ask Question</button>
-				</form>	
-			</div>
-			<div id="user-profile">
-		    <ul class="nav navbar-nav">
-		    <li class="dropdown" style="position:absolute; top:0; right:300px;">
-	        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:black;">Welcome, <%=current_user.full_name%>
-	        <span class="caret"></span></a>
-	        <ul class="dropdown-menu">
-		      	<li>
-		      		<%full_name = current_user.full_name.gsub(" ", "-")%>
-		      		<form method=get action="/user/<%=full_name%>">
-								<button class="btn" type="submit" value="Profile">View Profile</button>
-							</form>
-		      	</li>
-		      	<li>
-		      		<form method=post action=/logout>
-								<button class="btn" type="submit" value="Logout">Logout</button>
-							</form>
-		      	</li>
-		    	</ul>
-		    </li>
-		    </ul>
-	    </div>
-	  </div>
-	</nav>
-
-<div id="Content">
-	<a href="http://localhost:9393/question/<%=@question.title.gsub(" ", "-")%>"><h1><%=@question.title + "?"%></h1></a>
-
-	<%=@answer.answer%>
-</div>
+		<%=@answer.answer%>
+	</div>
 
 </div>
