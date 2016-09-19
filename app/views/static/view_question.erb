@@ -4,7 +4,7 @@
 
 <div id="Content" style="">
 	<div id="questionHead">
-		<a href="http://localhost:9393/user/<%=@question.user.full_name.gsub(" ", "-")%>"><div id="asked_by"><%=@question.user.full_name%></div></a>
+		<a href="http://lydia-quora-clone.herokuapp.com/user/<%=@question.user.full_name.gsub(" ", "-")%>"><div id="asked_by"><%=@question.user.full_name%></div></a>
 		<div id="title"><%=@question.title + "?"%></div>
 
 		<!-- Opens answer modal -->
@@ -98,7 +98,7 @@
 				<%time_diff_components_answer = Time.diff(answer.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>
 				<% user_name = User.find_by(id: answer.user_id).full_name %>
 				<div class="answer">
-					<a href="http://localhost:9393/user/<%=user_name.gsub(" ", "-")%>"><%=user_name%></a>
+					<a href="http://lydia-quora-clone.herokuapp.com/user/<%=user_name.gsub(" ", "-")%>"><%=user_name%></a>
 					<br>
 					<div id="question-answer"><%=answer.answer%></div><br>
 					<form method="post" action="/answers/<%=answer.id%>/vote" class="vote">
@@ -114,7 +114,7 @@
 							</button>	
 						<%end%>
 					</form> 
-				<a href="http://localhost:9393/<%=@question.title.gsub(" ", "-")%>/answer/<%=user_name.gsub(" ", "-")%>"><div id="answer-asked-time"">Answer posted <%=time_diff_components_question[:diff]%> ago</div></a>
+				<a href="http://lydia-quora-clone.herokuapp.com/<%=@question.title.gsub(" ", "-")%>/answer/<%=user_name.gsub(" ", "-")%>"><div id="answer-asked-time"">Answer posted <%=time_diff_components_question[:diff]%> ago</div></a>
 				</div>
 				<%end%>
 		</div>

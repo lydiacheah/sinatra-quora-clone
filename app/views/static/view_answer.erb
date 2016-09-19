@@ -2,7 +2,7 @@
 	<div id="Content">
 		<%time_diff_components_answer = Time.diff(@answer.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>
 
-		<a href="http://localhost:9393/question/<%=@question.title.gsub(" ", "-")%>" id="title"><h1><%=@question.title + "?"%></h1></a>
+		<a href="http://lydia-quora-clone.herokuapp.com/question/<%=@question.title.gsub(" ", "-")%>" id="title"><h1><%=@question.title + "?"%></h1></a>
 		<div style="float: left;">Answer by <%= @user.full_name %></div>
 		<div id="answer-asked-time">Answer posted <%=time_diff_components_answer[:diff]%> ago</div>
 		<br>
