@@ -13,3 +13,8 @@
 	display: block;
 	text-align: center;
 }
+
+#view-answer-title:hover {
+  text-decoration: none;
+  color: black;
+}

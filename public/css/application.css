@@ -159,3 +159,14 @@ li {
 .vote {
 	display: inline-block;
 }
+
+#user-buttons {
+	width: 100%;
+	background-color: white;
+	border-radius: 0;
+	/*font-style: italic;*/
+}
+
+#user-buttons:hover {
+	background-color: #eee;
+}

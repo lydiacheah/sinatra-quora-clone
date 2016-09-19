@@ -8,13 +8,13 @@
 	<div class="box">
 		<form id="signup" class="signup-login-form" method=post action=/signup>
 			<label for="name">Full Name</label>
-			<input type=text name="user[full_name]" value="name" placeholder=""><br>
+			<input type=text name="user[full_name]"><br>
 			<label for="email">Email Address</label>
-			<input type=text name="user[email]" value="email"><br>
+			<input type=text name="user[email]"><br>
 			<label for="password">Password</label>
-			<input type=password name="user[password]" value="password"><br>
+			<input type=password name="user[password]"><br>
 			<label for="password confirmation">Confirm Password</label>
-			<input type=password name="user[password_confirmation]" value="password confirmation"><br>
+			<input type=password name="user[password_confirmation]"><br>
 			<div id="disclaimer">
 				By clicking "Sign Up" you indicate that you have read and agree to the Terms of Service and Privacy Policy.
 			</div>
@@ -25,9 +25,9 @@
 
 		<form id="login" class="signup-login-form" method=post action=/login>
 			<label for="email">Email Address</label>
-	 		<input type=text placeholder="Your email address" name="user[email]" value="email"><br>
+	 		<input type=text name="user[email]"><br>
 	 		<label for="password">Password</label>
-	 		<input type=password placeholder="Your password" name="user[password]" value="password"><br>
+	 		<input type=password name="user[password]"><br>
 	 	 	<button class="btn btn-primary" style="font-size: 13px; font-weight: 650; letter-spacing: 2px; margin-top: 10px; float: right; padding: 5px 15px">Login</button>
 	 	 	<button type="button" class="btn btn-link home-cancel" style="font-size: 13px; color: #999; margin-top: 10px; float: right; padding: 5px 15px">Cancel</button>
 			<div style="clear: both;"></div>

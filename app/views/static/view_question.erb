@@ -59,18 +59,18 @@
 	</div>
 		<!-- MODAL! -->
 		<div id="<%=@question.id%>" class="modal fade" role="dialog">
-		  <div class="modal-dialog">	
+		  <div class="modal-dialog" id="answer-modal">	
 
 		    <div class="modal-content">
 		      <div class="modal-header">
 		        <button type="button" class="close" data-dismiss="modal">&times;</button>
-		        <h4 class="modal-title"><%=@question.title + "?"%></h4>
+		        <div class="modal-title" id="title" style="margin-bottom: 0;"><%=@question.title + "?"%></div>
 		      </div>
-		      <div class="modal-body">
+		      <div class="modal-body" style="padding-bottom: 60px">
 		        <form method=post action="/answer/new">
-							<input id="answer-input" type="text" name="answer" placeholder="Write your answer" style="height: 200px; width: 100%">
+							<textarea id="answer-input" name="answer" placeholder="Write your answer" style="height: 300px; width: 100%; padding-top: 5px; padding-left: 5px; font-size: 18px"></textarea> 
 							<input type="hidden" name="question_id" value=<%=@question.id%>>
-							<button type="submit">Submit</button>
+							<button type="submit" class="answerButton" style="margin-top: 20px; float: right;">Submit</button>
 						</form>	
 		      </div>
 		      <!-- MODAL FOOTER ('Close' button to dismiss modal) -->

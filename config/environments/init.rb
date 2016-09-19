@@ -26,6 +26,8 @@ require 'byebug'
 require 'bcrypt'
 require 'sinatra/flash'
 require 'time_diff'
+require 'will_paginate'
+require 'will_paginate/active_record'
 
 ######################################################################
 

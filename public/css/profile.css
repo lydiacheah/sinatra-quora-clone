@@ -3,9 +3,66 @@
 }
 
 #name {
+	text-align: center;
 	color: #333;
 	line-height: 1.25;
 	font-weight: bold;
-	font-size: 28px;
+	font-size: 40px;
 	letter-spacing: -1px;
+}
+
+#answers-questions-select {
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+#questions-select:hover {
+	cursor: pointer;
+	color: #999;
+}
+
+#answers-select:hover {
+	cursor: pointer;
+	color: #999;
+}
+
+.select-button {
+	display: inline;
+	font-size: 19px;
+	margin-right: 50px;
+	margin-left: 50px;
+	margin-top: 100px;
+}
+
+.title-select {
+	color: #616161;
+	margin-right: 10px;
+}
+
+.count-select {
+	color: #999;
+}
+
+.profile-feed {
+	border-top: 1px solid #e2e2e2;
+	padding-top: 10px;
+}
+
+.user-profile-response {
+	/*text-align: center;*/
+	padding-bottom: 10px;
+	margin-top: 15px;
+	border-bottom: 1px solid #e2e2e2;
+}
+
+#profile-time {
+	color: #999;
+}
+
+#answer-profile-feed {
+	display: none;
+}
+
+#user-answer {
+	font-size: 18px;
 }

@@ -1,12 +1,15 @@
 <div id="container">
-	<div id="index-body" style="">
+
+	<div id="index-body">
 		<%Question.includes(:user, :answers, :question_votes).all.each do |question|%>
+		<%time_diff_components_question = Time.diff(question.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>
 		<div id="feed">
 			<a href="http://localhost:9393/user/<%=question.user.full_name.gsub(" ", "-")%>"><div id="asked_by"><%=question.user.full_name%></div></a>
 			<a href="http://localhost:9393/question/<%=question.title.gsub(" ", "-")%>"><div id="title"><%=question.title + "?"%></div></a>
-			<div id="index-answer-number">
+			<div id="asked-time">Question posted <%=time_diff_components_question[:diff]%> ago</div>
+			<div id="index-answer-number"">
 				<%if question.answers.count == 1%>
-						<%="1 Answer"%>
+					<a href="http://localhost:9393/question/<%=question.title.gsub(" ", "-")%>"><%="1 Answer"%></a>
 				<%elsif question.answers.count > 1%>
 					<a href="http://localhost:9393/question/<%=question.title.gsub(" ", "-")%>"><%=question.answers.count.to_s + " Answers"%></a>
 				<%elsif current_user.id != question.user.id%>

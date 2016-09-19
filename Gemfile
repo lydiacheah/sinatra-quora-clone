@@ -29,6 +29,7 @@ gem 'bcrypt'
 gem 'byebug'
 gem 'sinatra-flash'
 gem 'time_diff'
+gem 'will_paginate'
 
 group :development, :test do
 	# Adding shotgun for local web hosting

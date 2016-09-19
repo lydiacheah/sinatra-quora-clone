@@ -1,5 +1,5 @@
 <div id="container">	
-<%if logged_in? == false%>
+<%if !logged_in? %>
 	<nav class="navbar navbar-fixed-top" id="quora-header">
 		<div class="container-fluid">
 		<div class="inner-header">
@@ -25,40 +25,43 @@
 
 	<div id="profile-body">
 		<h1 id="name"><%=@user.full_name%></h1>
-
-		<div id="user-questions">
-			<h2 id="user-questions-header"><%=@user.full_name + "'s Questions"%></h2>
-			<div id="question-number">
-				<%if @user.questions.all.count > 1%>
-					<%=@user.questions.all.count.to_s + " Questions"%>				
-				<%elsif @user.questions.all.count == 1%>
-					<%="1 Question"%>
-				<%else%>
-					<%="This user has not asked any questions yet!"%>
-				<%end%>
+		<div id="answers-questions-select">
+			<div id="questions-select" class="select-button">
+				<span class="title-select">Questions</span>
+				<span class="count-select"><%= @user.questions.all.count %></span>
 			</div>
-			<%@user.questions.each do |question|%>
-			<div id="questions">
-				<div class="question-title"><%=question.title%></div>
-				<div id="question-body"><%=question.body%></div>
+			<div id="answers-select" class="select-button">
+				<span class="title-select">Answers</span>
+				<span class="count-select"><%= @user.answers.all.count %></span>
 			</div>
-			<%end%>	
 		</div>
 
-		<div id="user-answers">
-			<h2 id="user-answers-header"><%=@user.full_name + "'s Answers"%></h2>
-			<%if @user.answers.all.count > 1%>
-					<%=@user.answers.all.count.to_s + " Answers"%>				
-				<%elsif @user.answers.all.count == 1%>
-					<%="1 Answer"%>
-				<%else%>
-					<%="This user has not answered any questions yet!"%>
+		<div id="question-profile-feed" class="profile-feed">
+			<% if @user.questions.all.count == 0 %>
+				<%="This user has not asked any questions yet."%>
+			<% else %>
+				<%@user.questions.each do |question|%>
+					<div class="user-profile-response">
+						<%time_diff_components_question = Time.diff(question.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>	
+						<a href="http://localhost:9393/question/<%=question.title.gsub(" ", "-")%>"><div id="title" style="margin-bottom: 5px"><%=question.title + "?"%></div></a>
+						<div id="profile-time">Question posted <%=time_diff_components_question[:diff]%> ago</div>
+					</div>
+				<%end%>	
+			<% end %>
+		</div>
+
+		<div id="answer-profile-feed" class="profile-feed">
+			<%if @user.answers.all.count == 0%>
+					<%="This user has not answered any questions yet."%>
+			<%else%>
+				<%@user.answers.each do |answer|%>
+					<div class="user-profile-response">
+						<%time_diff_components_answer = Time.diff(answer.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>	
+						<a href="http://localhost:9393/question/<%=answer.question.title.gsub(" ", "-")%>"><div id="title" style="margin-bottom: 5px"><%=answer.question.title + "?"%></div></a>
+						<div id="user-answer"><%=answer.answer%></div>
+						<div id="profile-time">Answer written <%=time_diff_components_answer[:diff]%> ago</div>
+					</div>
 				<%end%>
-			<%@user.answers.each do |answer|%>
-			<div id="answers">
-				<div class="question-title"><%=answer.question.title%></div>
-				<div id="user-answer"><%=answer.answer%></div>
-			</div>
 			<%end%>
 		</div>
 	</div>

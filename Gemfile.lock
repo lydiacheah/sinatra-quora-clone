@@ -81,6 +81,7 @@ GEM
       i18n
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    will_paginate (3.1.0)
 
 PLATFORMS
   ruby
@@ -102,6 +103,7 @@ DEPENDENCIES
   sinatra-flash
   thin
   time_diff
+  will_paginate
 
 BUNDLED WITH
    1.12.5

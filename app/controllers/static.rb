@@ -9,6 +9,7 @@ get '/' do
 end
 
 get '/index' do
+	# @posts = Question.paginate(page: params[:page], per_page: 5)
 	erb :"static/index"
 end
 
