@@ -37,32 +37,43 @@
 		</div>
 
 		<div id="question-profile-feed" class="profile-feed">
-			<% if @user.questions.all.count == 0 %>
-				<%="This user has not asked any questions yet."%>
-			<% else %>
-				<%@user.questions.each do |question|%>
-					<div class="user-profile-response">
-						<%time_diff_components_question = Time.diff(question.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>	
-						<a href="http://lydia-quora-clone.herokuapp.com/question/<%=question.title.gsub(" ", "-")%>"><div id="title" style="margin-bottom: 5px"><%=question.title + "?"%></div></a>
-						<div id="profile-time">Question posted <%=time_diff_components_question[:diff]%> ago</div>
-					</div>
-				<%end%>	
-			<% end %>
+			<div id="profile-prompt">
+				<% if @user.questions.all.count == 0 && current_user != @user %>
+					<%="This user has not asked any questions yet."%>
+				<% elsif @user.questions.all.count == 0 && current_user == @user %>	
+					<%="You have not asked any questions yet. :("%>
+					<br>
+					<br> 
+					<%="Remember, there is no such thing as a dumb question!"%> 
+			</div>
+				<% else %>
+					<%@user.questions.each do |question|%>
+						<div class="user-profile-response">
+							<%time_diff_components_question = Time.diff(question.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>	
+							<a href="http://lydia-quora-clone.herokuapp.com/question/<%=question.title.gsub(" ", "-")%>"><div id="title" style="margin-bottom: 5px"><%=question.title + "?"%></div></a>
+							<div id="profile-time">Question posted <%=time_diff_components_question[:diff]%> ago</div>
+						</div>
+					<%end%>	
+				<% end %>
 		</div>
 
-		<div id="answer-profile-feed" class="profile-feed">
-			<%if @user.answers.all.count == 0%>
+		<div id="answer-profile-feed" class="profile-feed">.
+			<div id="profile-prompt">
+				<%if @user.answers.all.count == 0 && current_user != @user %>
 					<%="This user has not answered any questions yet."%>
-			<%else%>
-				<%@user.answers.each do |answer|%>
-					<div class="user-profile-response">
-						<%time_diff_components_answer = Time.diff(answer.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>	
-						<a href="http://lydia-quora-clone.herokuapp.com/question/<%=answer.question.title.gsub(" ", "-")%>"><div id="title" style="margin-bottom: 5px"><%=answer.question.title + "?"%></div></a>
-						<div id="user-answer"><%=answer.answer%></div>
-						<div id="profile-time">Answer written <%=time_diff_components_answer[:diff]%> ago</div>
-					</div>
+				<%elsif @user.answers.all.count == 0 && current_user == @user %>
+					<%="You have not answered any questions yet. Go share your knowledge!"%>
+			</div>
+				<%else%>
+					<%@user.answers.each do |answer|%>
+						<div class="user-profile-response">
+							<%time_diff_components_answer = Time.diff(answer.created_at, Time.now.utc, '%y, %M, %w, %d %H %N %S')%>	
+							<a href="http://lydia-quora-clone.herokuapp.com/question/<%=answer.question.title.gsub(" ", "-")%>"><div id="title" style="margin-bottom: 5px"><%=answer.question.title + "?"%></div></a>
+							<div id="user-answer"><%=answer.answer%></div>
+							<div id="profile-time">Answer written <%=time_diff_components_answer[:diff]%> ago</div>
+						</div>
+					<%end%>
 				<%end%>
-			<%end%>
 		</div>
 	</div>
 

@@ -37,7 +37,7 @@
 			    <li class="dropdown" style="position: absolute; top:0; right:300px;">
 		        <a class="dropdown-toggle" data-toggle="dropdown" href="#" style="color:black;">Welcome, <%=current_user.full_name%>
 		        <span class="caret"></span></a>
-		        <ul class="dropdown-menu" id="dropdown-menu" style="min-width: 163px">
+		        <ul class="dropdown-menu" id="dropdown-menu" style="width: 100%">
 				    	<li style="margin-right: 0">
 				      	<%full_name = current_user.full_name.gsub(" ", "-")%>
 				      	<form method=get action="/user/<%=full_name%>" style="margin-bottom: 0">
